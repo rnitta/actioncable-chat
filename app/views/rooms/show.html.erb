@@ -1,0 +1,29 @@
+<div class="row" id="wrapper">
+  <div id="sidewrapper">
+    <div class="menu">
+      <%= link_to "ログアウト", logout_path, method: :delete %>
+    </div>
+    <div id="onlineusers">
+      <%= render @onlineusers %>
+      <!-- オンラインのユーザ一覧 -->
+    </div>
+    <div id="allusers">
+      <!-- すべてのユーザ -->
+    </div>
+  </div>
+  <div id="chat">
+    <div id="messages">
+      <%= render @messages %>
+      <!-- チャット画面 -->
+    </div>
+    <div id="form">
+      <form>
+        <label>Send Message!!</label><br>
+        <input type="text" data-behavior="message_sender">
+      </form>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "cable.js" %>
+<%= javascript_include_tag "channels/room.js" %>
+<%= javascript_include_tag "channels/appearance.js" %>

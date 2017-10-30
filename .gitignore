@@ -21,3 +21,16 @@
 /yarn-error.log
 
 .byebug_history
+vendor/bundle
+
+
+doc/
+*.swp
+*~
+.project
+.DS_Store
+.idea
+.secret
+
+# Ignore Spring files.
+/spring/*.pid
