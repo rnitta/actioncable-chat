@@ -1,24 +1,22 @@
-# README
+# ActionCable Chat
+ActionCable(Websocket)を利用した1対1のリアルタイム通信チャット
+---
+## 説明
+- ユーザ登録
+- テキストチャット
+- メッセージログはデータベースに保存
+- オンラインのユーザ一覧表示
+- チャット中の相手以外からのメッセージを弱く通知
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 使い方
+### インストール
+`$ bundle install`  
+`$ bundle exec rails`  
+`$ bundle exec rails db:migrate`  
 
-Things you may want to cover:
+### 実行
+`$ bundle exec rails s`
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### アクセス
+ブラウザから  
+`localhost:3000`

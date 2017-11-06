@@ -2,20 +2,23 @@
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'appearance_channel'
-    ActionCable.server.broadcast(
-      'appearance_channel',
-      action: 'come',
-      name: current_user.name
-    )
     Onlineuser.create(name: current_user.name)
+    broadcast_updates
   end
 
   def unsubscribed
+    Onlineuser.find_by(name: current_user.name).destroy
+    broadcast_updates
+  end
+
+  private
+
+  def broadcast_updates
+    onlines_html = ApplicationController.render(partial: 'users/onlineuser',
+                                                collection: Onlineuser.group(:name))
     ActionCable.server.broadcast(
       'appearance_channel',
-      action: 'go',
-      name: current_user.name
+      html: onlines_html
     )
-    Onlineuser.find_by(name: current_user.name).destroy
   end
 end

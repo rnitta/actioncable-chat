@@ -1,27 +1,24 @@
 <div class="row" id="wrapper">
   <div id="sidewrapper">
     <div class="menu">
+      <p>Your ID: <%= current_user.name %></p>
       <%= link_to "ログアウト", logout_path, method: :delete %>
     </div>
+    <p>Online Users</p>
     <div id="onlineusers">
-      <%= render @onlineusers %>
+      <%= render(partial: 'users/onlineuser', collection: @onlineusers) %>
       <!-- オンラインのユーザ一覧 -->
     </div>
+    <p>All Users</p>
     <div id="allusers">
       <!-- すべてのユーザ -->
+      <%= render @users %>
     </div>
   </div>
-  <div id="chat">
-    <div id="messages">
-      <%= render @messages %>
-      <!-- チャット画面 -->
-    </div>
-    <div id="form">
-      <form>
-        <label>Send Message!!</label><br>
-        <input type="text" data-behavior="message_sender">
-      </form>
-    </div>
+  <div id="chat" data-user-name="<%= current_user.name %>">
+    <!-- チャットフォーム -->
+    <div id="back"><!-- 背景用 --></div>
+
   </div>
 </div>
 <%= javascript_include_tag "cable.js" %>
