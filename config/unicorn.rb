@@ -4,11 +4,13 @@ preload_app true
 
 rails_root = File.expand_path('../../', __FILE__)
 
+app_path = File.dirname(File.dirname(Dir.pwd))
 worker_processes 2
-working_directory rails_root
+working_directory "#{app_path}/current"
 
-listen "#{rails_root}/tmp/unicorn.sock"
-pid "#{rails_root}/tmp/unicorn.pid"
+
+listen "#{app_path}/shared/tmp/sockets/unicorn.sock", :backlog => 64
+pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 
 stderr_path "#{rails_root}/log/unicorn_error.log"
 stdout_path "#{rails_root}/log/unicorn.log"
