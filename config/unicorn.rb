@@ -2,8 +2,16 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 timeout 15
 preload_app true
 
-listen '/home/rnitta/acc/tmp/unicorn.sock'
-pid    '/home/rnitta/acc/tmp/unicorn.pid'
+rails_root = File.expand_path('../../', __FILE__)
+
+worker_processes 2
+working_directory rails_root
+
+listen "#{rails_root}/tmp/unicorn.sock"
+pid "#{rails_root}/tmp/unicorn.pid"
+
+stderr_path "#{rails_root}/log/unicorn_error.log"
+stdout_path "#{rails_root}/log/unicorn.log"
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and
@@ -27,6 +35,3 @@ after_fork do |server, worker|
   defined?(ActiveRecord::Base) and
     ActiveRecord::Base.establish_connection
 end
-
-stderr_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
-stdout_path File.expand_path('log/unicorn.log', ENV['RAILS_ROOT'])
