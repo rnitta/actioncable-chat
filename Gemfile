@@ -28,7 +28,8 @@ gem 'sqlite3'
 gem 'turbolinks', '~> 5'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
+gem 'unicorn'
+gem 'unicorn-worker-killer'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -55,6 +56,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
+  gem 'capistrano3-unicorn'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
