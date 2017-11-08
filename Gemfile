@@ -11,6 +11,8 @@ gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+gem 'execjs'
+gem 'therubyracer', platforms: :ruby
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '4.3.1'

@@ -34,3 +34,6 @@ doc/
 
 # Ignore Spring files.
 /spring/*.pid
+
+# precompile
+public/assets/**

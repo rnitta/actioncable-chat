@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 lock '3.9.1'
 
-set :application, 'action cable chat'
+set :application, 'action_cable_chat'
 set :repo_url, 'https://github.com/rnitta/actioncable-chat.git'
 
 set :deploy_to, '/home/rnitta/acc/'
@@ -9,8 +9,9 @@ set :deploy_to, '/home/rnitta/acc/'
 set :keep_releases, 5
 set :ssh_options, port: '2222'
 
-set :rbenv_type, :system
+set :rbenv_type, :user
 set :rbenv_ruby, '2.4.2'
+set :rbenv_path, '/home/rnitta/.rbenv'
 
 set :rbenv_prefix,
       "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"

@@ -11,7 +11,6 @@ ActionCable(Websocket)を利用した1対1のリアルタイム通信チャッ�
 ## 使い方
 ### インストール
 `$ bundle install`  
-`$ bundle exec rails`  
 `$ bundle exec rails db:migrate`  
 
 ### 実行
