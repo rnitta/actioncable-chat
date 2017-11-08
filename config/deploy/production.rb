@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-set :branch, 'master'
+set :branch, 'deploy'
 
 role :app, %w{rnitta@tk2-403-42673.vs.sakura.ne.jp}
 role :web, %w{rnitta@tk2-403-42673.vs.sakura.ne.jp}
