@@ -4,7 +4,6 @@ preload_app true
 
 listen '/home/rnitta/acc/tmp/unicorn.sock'
 pid    '/home/rnitta/acc/tmp/unicorn.pid'
-working_directory 'home/rnitta/acc'
 
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and
