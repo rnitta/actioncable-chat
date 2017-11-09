@@ -7,11 +7,18 @@ App.room = App.cable.subscriptions.create({
   connected: function() {}, //接続時
   disconnected: function() {}, //切断時
   received: function(data) { //受信時
-    $('#messages').append(data['message']);
-    if(data['sender'] != $('div#chat').attr('data-user-name') &&
-        data['sender'] != $('div#chat').attr('data-speaking-to')){
-          $('div#onlineusers a').attr('data-speaking-to', data['sender']).append('<span class="notify"> ( ! )</span>');
-        }
+    if (data['sender'] == $('div#chat').attr('data-user-name') ||
+      data['sender'] == $('div#chat').attr('data-speaking-to')) {
+      $('#messages').append(data['message']);
+      $('#messages').animate({
+        scrollTop: $('#messages')[0].scrollHeight
+      }, 'fast');
+    }
+    if (data['sender'] != $('div#chat').attr('data-user-name') &&
+      data['sender'] != $('div#chat').attr('data-speaking-to')) {
+      $('div#onlineusers a').attr('data-speaking-to', data['sender']).append('<span class="notify"> ( ! )</span>');
+    }
+
   },
   send_message: function(message) { //送信時
     this.perform('send_message', {
@@ -42,6 +49,9 @@ $(document).on('click', 'a.switch-user', function() {
     })
     .done(function(data) {
       $('div#chat').html(data);
+      $('#messages').animate({
+        scrollTop: $('#messages')[0].scrollHeight
+      }, 'fast');
     })
     .fail(function() {
       alert('error');
