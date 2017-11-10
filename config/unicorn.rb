@@ -9,8 +9,8 @@ worker_processes 2
 working_directory "#{app_path}/current"
 
 
-listen "#{app_path}/shared/tmp/sockets/unicorn.sock", :backlog => 64
-pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+listen '/tmp/unicorn.sock'
+pid '/tmp/unicorn.pid'
 
 stderr_path "#{rails_root}/log/unicorn_error.log"
 stdout_path "#{rails_root}/log/unicorn.log"
