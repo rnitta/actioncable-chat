@@ -23,7 +23,7 @@ set :linked_dirs, %w{bin log tmp/backup tmp/pids tmp/cache tmp/sockets vendor/bu
 set :bundle_jobs, 4
 set :rails_env, 'production'
 
-set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }
+set :unicorn_pid, -> { "/tmp/unicorn.pid" }
 set :unicorn_config_path, 'config/unicorn.rb'
 set :unicorn_rack_env, 'deployment' # "development", "deployment", or "none"
 
