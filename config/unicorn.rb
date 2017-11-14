@@ -9,8 +9,8 @@ worker_processes 2
 working_directory "#{app_path}/current"
 
 
-listen '/tmp/unicorn.sock'
-pid '/tmp/unicorn.pid'
+listen "/home/rnitta/acc/tmp/unicorn.sock"
+pid "/home/rnitta/acc/tmp/unicorn.pid"
 
 stderr_path "#{rails_root}/log/unicorn_error.log"
 stdout_path "#{rails_root}/log/unicorn.log"
