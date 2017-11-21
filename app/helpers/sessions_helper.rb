@@ -24,8 +24,14 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+  # cookieを削除
+  def forget(_user)
+    cookies.delete(:user_id)
+    cookies.delete(:remember_token)
+  end
   # 現在のユーザーをログアウトする
   def log_out
+    forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
